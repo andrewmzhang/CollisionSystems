@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="generator" content="WordGrinder 0.5.1">
+<title>main</title>
+</head><body>
+
+<h1>Collision Systems Implementation for C++98</h1>
+<h2>Abstract:</h2>
+<p>The code simulates the colliding motion of N frictionless hard sphere particles that exhibit perfect elastic collision in an event-driven simulation. </p>
+<h2>Constraints:</h2>
+<p>Each particle is assumed to be a hard sphere (think pool balls or something) and confined in a unit box. This is technically known as a hard sphere or hard circle model, depending on the number of available dimensions. Constraints are as follows:<ul></p>
+<li>Particles have a known position (x,y), velocity (vx,vy), radius (r), and mass. All except the mass are represented in double floating point (0 &lt;= d &lt;= 1).</li>
+<li>Perfect elastic collisions with everything</li>
+<li>No loss of total kinetic energy due to deformation of particles, friction, or elasticity of material.</li>
+<li>No external forces will be applied</li>
+<li>Particles move in straight lines between collisions. </li>
+<li>Particles may only collide two at a time (this makes simulating billiards incorrect, since a 3-way collision has different physics than two 2-way collisions).</ul></li>
+<h2>Simulation:</h2>
+<p>There are 2 ways to implement this simulation. Time driven and event driven.<ul></p>
+<li>Time-driven: For each time unit dt, move each particle the appropriate amounts. If a particle overlaps another, roll back time for the 2 particles, simulate the collision, and repeat the process. Unforntunately this results in N^2 runtime, as for each increment of dt will require a search between each possible pair of particles. Furthermore, depending on the size of dt, the simulation could take an insane amount of time (if dt is small) or it could miss collisions if two particles pass through each other (with a large dt). Thus the simulation is timely and inaccurate. </ul></li>
+</body>
+</html>
