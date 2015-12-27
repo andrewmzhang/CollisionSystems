@@ -3,14 +3,8 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <meta name="generator" content="WordGrinder 0.5.1">
 <title>Collision Systems for C++98</title>
-</head><body style="
-	margin: 40px auto;
-	max-width: 1000px;
-	line-height: 1.6;
-	font-size: 18px;
-	color: #444;
-	padding: 0px;"
->
+</head><body>
+
 <h1>Collision Systems for C++98</h1>
 <h2>Abstract:</h2>
 <p>The code simulates the colliding motion of N frictionless hard sphere particles that exhibit perfect elastic collision in an event-driven simulation. </p>
