@@ -2,15 +2,8 @@
 <html><head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <meta name="generator" content="WordGrinder 0.5.1">
-<title>main</title>
-</head><body style="
-	margin: 40px auto;
-	max-width: 1000px;
-	line-height: 1.6;
-	font-size: 18px;
-	color: #444;
-	padding: 0px;"
->
+<title>Collision Systems for C++98</title>
+</head><body>
 
 <h1>Collision Systems for C++98</h1>
 <h2>Abstract:</h2>
@@ -25,6 +18,8 @@
 <li>Particles may only collide two at a time (this makes simulating billiards incorrect, since a 3-way collision has different physics than two 2-way collisions).</ul></li>
 <h2>Simulation:</h2>
 <p>There are 2 ways to implement this simulation. Time driven and event driven.<ul></p>
-<li>Time-driven: For each time unit dt, move each particle the appropriate amounts. If a particle overlaps another, roll back time for the 2 particles, simulate the collision, and repeat the process. Unforntunately this results in N^2 runtime, as for each increment of dt will require a search between each possible pair of particles. Furthermore, depending on the size of dt, the simulation could take an insane amount of time (if dt is small) or it could miss collisions if two particles pass through each other (with a large dt). Thus the simulation is timely and inaccurate. </ul></li>
+<li>Time-driven: For each time unit dt, move each particle the appropriate amounts. If a particle overlaps another, roll back time for the 2 particles, simulate the collision, and repeat the process. Unforntunately this results in N^2 runtime, as for each increment of dt will require a search between each possible pair of particles. Furthermore, depending on the size of dt, the simulation could take an insane amount of time (if dt is small) or it could miss collisions if two particles pass through each other (with a large dt). Thus the simulation is timely and inaccurate. </li>
+<li>Event-Driven: Create a priority queue, and for each particle p, determine when it will collide with another particle or the boundaries of the box and add the event to the PQ. Move each particle by dt until the next collision event. Then for each particle invovled, update velocities, calculate new imminent collisions, and add the new events to the PQ. Although the initilazation will cost N^2 runtime, each subsequent update to a particle(s) after a collision will take between N and 2N runtime. Furthermore collisions will not be skipped and unnessecary calculations will not be performed; it is not nessecary to make any new calculations when a collision event is not taking place.</ul></li>
+<h2><br/></h2>
 </body>
 </html>
